@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-ene-2016 16:19:00 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="sakila" name="modelo.FilmActor" table="film_actor">
+    <composite-id class="modelo.FilmActorId" name="id">
+      <key-property name="actorId" type="short">
+        <column name="actor_id"/>
+      </key-property>
+      <key-property name="filmId" type="short">
+        <column name="film_id"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="modelo.Actor" fetch="select" insert="false" name="actor" update="false">
+      <column name="actor_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="modelo.Film" fetch="select" insert="false" name="film" update="false">
+      <column name="film_id" not-null="true"/>
+    </many-to-one>
+    <property name="lastUpdate" type="timestamp">
+      <column length="19" name="last_update" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
